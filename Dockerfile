@@ -1,7 +1,12 @@
-FROM nginx:alpine
-# Copy all project files to nginx html serving directory
-COPY . /usr/share/nginx/html
-# Configure Nginx to listen on port 8080 (Google Cloud Run default port)
-RUN sed -i 's/listen\(.*\)80;/listen 8080;/g' /etc/nginx/conf.d/default.conf
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
 EXPOSE 8080
-CMD ["nginx", "-g", "daemon off;"]
+
+CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8080"]

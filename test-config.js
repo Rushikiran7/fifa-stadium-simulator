@@ -4,9 +4,9 @@ const path = require('path');
 
 console.log("Running local configuration tests...");
 
-// 1. Load app.js and inspect the translations mapping
+// 1. Load frontend/app.js and inspect the translations mapping
 try {
-  const appCode = fs.readFileSync(path.join(__dirname, 'app.js'), 'utf8');
+  const appCode = fs.readFileSync(path.join(__dirname, 'frontend', 'app.js'), 'utf8');
   
   // Extract translations block using simple parsing
   const transMatch = appCode.match(/const translations = ({[\s\S]*?});/);
@@ -36,9 +36,9 @@ try {
   process.exit(1);
 }
 
-// 2. Validate HTML file structure and script inclusions
+// 2. Validate HTML file structure and script inclusions in frontend
 try {
-  const htmlContent = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
+  const htmlContent = fs.readFileSync(path.join(__dirname, 'frontend', 'index.html'), 'utf8');
   assert.ok(htmlContent.includes('<script src="app.js"></script>'), "index.html must load app.js");
   assert.ok(htmlContent.includes('id="threejs-canvas-wrapper"'), "index.html must have 3D canvas wrapper");
   assert.ok(htmlContent.includes('id="scenario-selector"'), "index.html must have scenario selector");

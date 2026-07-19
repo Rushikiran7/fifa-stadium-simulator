@@ -1,0 +1,11 @@
+# SQLite database
+stadium_ops.db
+
+# Python caching
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# Local package artifacts
+node_modules/
+package-lock.json
