@@ -1,0 +1,14 @@
+{
+  "name": "fifa-stadium-simulator",
+  "version": "1.0.0",
+  "description": "FIFA World Cup 2026 GenAI Stadium Operations Simulator",
+  "main": "app.js",
+  "scripts": {
+    "start": "npx http-server -p 8080",
+    "test": "node test-config.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
